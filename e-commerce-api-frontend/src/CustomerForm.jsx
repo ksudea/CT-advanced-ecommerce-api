@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { object, func } from 'prop-types';
-import { Form, Button, Alert, Modal, Spinner } from 'react-bootstrap';
+import { Form, Button, Alert, Modal, Spinner, Container } from 'react-bootstrap';
 import axios from 'axios';
 
 const CustomerForm = () => {
@@ -132,46 +132,46 @@ const CustomerForm = () => {
     if (isSubmitting) return <p>Submitting product data...</p>
 
     return (
-        <>
+        <Container className='my-5'>
             <Form onSubmit={handleSubmit}>
-                <h3>{id ? 'Edit' : 'Add'}</h3>
+                <h3 className='my-3'>{id ? 'Edit' : 'Add'} Customer</h3>
                 {errorMessage && <Alert variant='danger'>{errorMessage}</Alert>}
-                <Form.Group controlId="customerName">
+                <Form.Group controlId="customerName" className='my-3'>
                     <Form.Label>Name: </Form.Label>
                     <Form.Control type="text" name="name" value={customer.name} onChange={handleChange} isInvalid={!!errors.name}/>
                     <Form.Control.Feedback type='invalid'>
                         {errors.name}
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="customerEmail">
+                <Form.Group controlId="customerEmail" className='my-3'>
                     <Form.Label>E-mail: </Form.Label>
                     <Form.Control type="text" name="email" value={customer.email} onChange={handleChange} isInvalid={!!errors.email}/>
                     <Form.Control.Feedback type='invalid'>
                         {errors.email}
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="customerPhone">
+                <Form.Group controlId="customerPhone" className='my-3'>
                     <Form.Label>Phone number: </Form.Label>
                     <Form.Control type="number" name="phone" value={customer.phone} onChange={handleChange} isInvalid={!!errors.phone}/>
                     <Form.Control.Feedback type='invalid'>
                         {errors.phone}
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="customerAccountUsername">
+                <Form.Group controlId="customerAccountUsername" className='my-3'>
                     <Form.Label>Username: </Form.Label>
                     <Form.Control type="text" name="username" value={customerAccount.username} onChange={handleChangeAccount} isInvalid={!!errors.username}/>
                     <Form.Control.Feedback type='invalid'>
                         {errors.username}
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="customerAccountPassword">
+                <Form.Group controlId="customerAccountPassword" className='my-3'>
                     <Form.Label>Password: </Form.Label>
                     <Form.Control type="text" name="password" value={customerAccount.password} onChange={handleChangeAccount} isInvalid={!!errors.password}/>
                     <Form.Control.Feedback type='invalid'>
                         {errors.password}
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Button variant='primary' type='submit' disabled={isSubmitting}>
+                <Button variant='primary' type='submit' disabled={isSubmitting} className='my-3'>
                     {isSubmitting ? <Spinner as='span' animation='border' size='sm'/> : 'Submit'}
                 </Button>
             </Form>
@@ -189,7 +189,7 @@ const CustomerForm = () => {
                 </Modal.Footer>
 
             </Modal>
-        </>
+        </Container>
     );
 };
 

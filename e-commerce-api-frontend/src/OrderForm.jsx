@@ -89,11 +89,11 @@ const OrderForm = () => {
     if (isSubmitting) return <p>Submitting order data...</p>
 
     return (
-        <Container className='my-3'>
+        <Container className='my-5'>
             <Form onSubmit={handleSubmit}>
-                <h3> Create New Order </h3>
+                <h3 className='my-3'> Create New Order </h3>
                 {errorMessage && <Alert variant='danger'>{errorMessage}</Alert>}
-                <Form.Group controlId="customerId">
+                <Form.Group controlId="customerId" className='my-4'>
                     <Form.Label>Customer ID: </Form.Label>
                     <Form.Control type="text" name="customer_id" value={order.customer_id} onChange={handleChange} isInvalid={!!errors.customer_id}/>
                     <Form.Control.Feedback type='invalid'>
@@ -101,19 +101,19 @@ const OrderForm = () => {
                     </Form.Control.Feedback>
                 </Form.Group>
                 {formValues.map((formValue, index) => (
-                    <FormGroup key={index}>
+                    <FormGroup key={index} className='my-3'>
                         <Col>
                         <Form.Label>Product ID: </Form.Label>
                         <Form.Control type="number" name="product_id" onChange={e => handleChangeProductId(index, e)} isInvalid={!!errors.product_id}/>
                         <Form.Control.Feedback type='invalid'>
                             {errors.product_id}
                         </Form.Control.Feedback>
-                        <Button onClick={() => removeFormFields(index)}>Remove</Button>
+                        <Button className='my-2' onClick={() => removeFormFields(index)}>Remove</Button>
                         </Col>
                     </FormGroup>
                 ))}
-                <Button variant='secondary' size='small' onClick={() => addFormFields()}>+ Add Another Product</Button>
-                <Button variant='primary' type='submit' disabled={isSubmitting}>
+                <Button variant='secondary' className='my-3 mx-2' size='sm' onClick={() => addFormFields()}>+ Add Another Product</Button>
+                <Button variant='primary' className='my-3 mx-2' type='submit' disabled={isSubmitting}>
                     {isSubmitting ? <Spinner as='span' animation='border' size='sm'/> : 'Submit'}
                 </Button>
             </Form>

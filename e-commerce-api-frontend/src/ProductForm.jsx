@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { object, func } from 'prop-types';
-import { Form, Button, Alert, Modal, Spinner } from 'react-bootstrap';
+import { Form, Button, Alert, Modal, Spinner, Container } from 'react-bootstrap';
 import axios from 'axios';
 
 const ProductForm = () => {
@@ -68,25 +68,25 @@ const ProductForm = () => {
     if (isSubmitting) return <p>Submitting product data...</p>
 
     return (
-        <>
+        <Container className='my-5'>
             <Form onSubmit={handleSubmit}>
-                <h3>{id ? 'Edit' : 'Add'}</h3>
+                <h3 className='my-3'>{id ? 'Edit' : 'Add'} Product</h3>
                 {errorMessage && <Alert variant='danger'>{errorMessage}</Alert>}
-                <Form.Group controlId="productName">
+                <Form.Group controlId="productName" className='my-3'>
                     <Form.Label>Name: </Form.Label>
                     <Form.Control type="text" name="name" value={product.name} onChange={handleChange} isInvalid={!!errors.name}/>
                     <Form.Control.Feedback type='invalid'>
                         {errors.name}
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="productPrice">
+                <Form.Group controlId="productPrice" className='my-3'>
                     <Form.Label>Price: </Form.Label>
                     <Form.Control type="number" name="price" value={product.price} onChange={handleChange} isInvalid={!!errors.price}/>
                     <Form.Control.Feedback type='invalid'>
                         {errors.price}
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Button variant='primary' type='submit' disabled={isSubmitting}>
+                <Button variant='primary' type='submit' disabled={isSubmitting} className='my-3'>
                     {isSubmitting ? <Spinner as='span' animation='border' size='sm'/> : 'Submit'}
                 </Button>
             </Form>
@@ -104,7 +104,7 @@ const ProductForm = () => {
                 </Modal.Footer>
 
             </Modal>
-        </>
+        </Container>
     );
 };
 

@@ -10,9 +10,11 @@ import CustomerList from './CustomerList';
 import CustomerDetail from './CustomerDetails';
 import CustomerForm from './CustomerForm';
 import OrderForm from './OrderForm';
+import NavigationBar from './NavigationBar';
 function App() {
   return (
     <div className='app-container'>
+      <NavigationBar />
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='*' element={<NotFound />} />

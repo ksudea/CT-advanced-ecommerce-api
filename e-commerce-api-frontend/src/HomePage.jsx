@@ -1,9 +1,10 @@
+import { Container } from 'react-bootstrap';
 
 const HomePage = () => {
     return(
-        <div>
+        <Container className='my-5'>
             <h2>Home</h2>
-        </div>
+        </Container>
     )
 }
 

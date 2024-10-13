@@ -70,11 +70,16 @@ const CustomerDetail = () => {
             <Row className='my-3'>
                 <Card className='shadow-lg rounded-3'>
                     <Card.Body>
-                        <Card.Title><h4>{customer.name}</h4></Card.Title>
+                        <Card.Title className="mb-3"><h3>Customer Details:</h3></Card.Title>
                         <Card.Text>
-                                    Username: {customerAccount && customerAccount.username}
-                                    Password: {customerAccount && customerAccount.password}
-                                    Account ID: {customerAccount && customerAccount.id}
+                            <Row><p><strong>Name: </strong> {customer && customer.name}</p></Row>
+                            <Row><p><strong>E-mail: </strong> {customer && customer.email}</p></Row>
+                            <Row><p><strong>Phone number: </strong> {customer && customer.phone}</p></Row>
+                            <Row><p><strong>Customer ID: </strong> {customer && customer.id}</p></Row>
+                        <h4 className='my-3'>Account Details:</h4>
+                            <Row><p><strong>Username: </strong> {customerAccount && customerAccount.username}</p></Row>
+                            <Row><p><strong>Password: </strong> {customerAccount && customerAccount.password}</p></Row>
+                            <Row><p><strong>Account ID: </strong> {customerAccount && customerAccount.id}</p></Row>
                         </Card.Text>
                         </Card.Body>
                 </Card>
@@ -91,15 +96,17 @@ const CustomerDetail = () => {
                     <Button variant='danger' className='mx-2 my-3' style={{minWidth: '60%',}} onClick={() => deleteCustomer(customer.id)}>Delete</Button>
                 </Col>
             </Row>
-            <Row>
-                <Button variant='primary' onClick={() => navigate(`/add-order/${customer.id}`)}>Create Order</Button>
+            <Row className='my-3'>
+                <Col>
+                <Button variant='primary' className='mx-2 my-3' style={{minWidth: '75%',}} onClick={() => navigate(`/add-order/${customer.id}`)}>Create Order</Button>
+                </Col>
             </Row>
             <Modal show={showSuccessModal} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Success!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Product has been successfully deleted!
+                    Customer has been successfully deleted!
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={handleClose}>
