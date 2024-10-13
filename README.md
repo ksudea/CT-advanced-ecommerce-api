@@ -5,7 +5,7 @@ Mini-project: Advanced E-Commerce API in React, with a Flask backend.
    - Create Customer Form (path: /add-customer): capture and submit essential customer information, including name, email, and phone number.
    - Read Customer Details (path: /customer-details/:id): component to display customer details retrieved from the backend based on their unique identifier (ID).
    - Update Customer Form (path: /edit-customer/:id): form component allows users to update customer details, including the name, email, and phone number.
-   - Delete Customer Information: function in Customer Detail Component and List Customers component that when triggered will delete a customer from the backend based on their unique identifier (ID).
+   - Delete Customer Information: function in Customer Detail component that when triggered will delete a customer from the backend based on their unique identifier (ID).
    - List Customers (path: /customers): display list of all customers, each with navigation to customer details page and buttons to edit and delete.
 
 2. Product Catalog: React components and functionality for managing Products:
