@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { array, func } from 'prop-types';
 import { Button, Container, ListGroup, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
@@ -13,7 +13,7 @@ const CustomerList = () => {
             const response = await axios.get(`http://127.0.0.1:5000/customers`);
             setCustomers(response.data);
         } catch(error) {
-            console.log("Error fetching products: ", error);
+            console.log("Error fetching customers: ", error);
         }
     };
 

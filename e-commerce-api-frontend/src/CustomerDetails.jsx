@@ -12,6 +12,7 @@ const CustomerDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
+    //fetch from customers table
     const fetchCustomerDetails = async(id) => {
         try {
             const response = await axios.get(`http://127.0.0.1:5000/customers/${id}`);
@@ -22,6 +23,7 @@ const CustomerDetail = () => {
         }
     };
 
+    //fetch from customer accounts t
     const fetchCustomerAccount = async(id) => {
         try {
             const response = await axios.get(`http://127.0.0.1:5000/customeraccounts/customerId/${id}`);
@@ -37,6 +39,8 @@ const CustomerDetail = () => {
             setErrorMessage(error.message);
         }
     };
+
+    //function to delete customer
     const deleteCustomer = async(id) => {
         try {
             await axios.delete(`http://127.0.0.1:5000/customers/${id}`);
@@ -56,6 +60,7 @@ const CustomerDetail = () => {
         }
     }, [id]);
 
+    //after deletion, navigate to customers list
     const handleClose = () => {
         setShowSuccessModal(false);
         navigate('/customers');

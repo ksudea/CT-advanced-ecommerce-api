@@ -19,7 +19,7 @@ const CustomerForm = () => {
     });
     const [customerAccountId, setCustomerAccountId] = useState('');
 
-
+// fetch from customer table
     const fetchCustomerDetails = async(id) => {
         try {
             const response = await axios.get(`http://127.0.0.1:5000/customers/${id}`);
@@ -29,6 +29,7 @@ const CustomerForm = () => {
             setErrorMessage(error.message);
         }
     };
+// fetch from customer account table, 
     const fetchCustomerAccount = async(id) => {
         try {
             const response = await axios.get(`http://127.0.0.1:5000/customeraccounts/customerId/${id}`);
@@ -49,6 +50,7 @@ const CustomerForm = () => {
         }
     }, [id]);
 
+    // form validation: all fields must be non-empty 
     const validateForm = () => {
         let errors = {};
         if (!customer.name) errors.name="Customer name is required";
@@ -60,6 +62,7 @@ const CustomerForm = () => {
         return Object.keys(errors).length === 0;
     };
 
+    // handleSubmit when we are adding a new account
     const handleSubmitAccountAdd = async() => {
         try {
             const response = await axios.get(`http://127.0.0.1:5000/customers/email/${customer.email}`)
@@ -74,6 +77,7 @@ const CustomerForm = () => {
         }
     };
 
+    //handleSubmit when we are editing an existing account 
     const handleSubmitAccountEdit = async() => {
         try {
             const formattedCustomerAccount = {...customerAccount, name: customer.name}
@@ -84,6 +88,8 @@ const CustomerForm = () => {
             setErrorMessage(error.message);
         }
     };
+
+    //handleSubmit for the customer (makes call to the handleSubmit functions for handling account creation/updating)
     const handleSubmit = async (event) => {
         event.preventDefault();
         if(!validateForm()) return;

@@ -16,9 +16,12 @@ const OrderForm = () => {
     const [order, setOrder] = useState({
         customer_id: id, date: currentDate, product_ids: []
     });
+    // dynamically updating the form: no set number of products to purchase, so dynamically update
+    // product id fields using formValues
     const [formValues, setFormValues] = useState([0]);
 
     useEffect(() => {
+        //getting and formatting current date
         const today = new Date();
         const year = today.getFullYear();
         const month = (today.getMonth() + 1).toString().padStart(2, '0'); // Add leading zero if needed
@@ -41,6 +44,7 @@ const OrderForm = () => {
         setSubmitting(true);
         try {
             if(id) {
+                //updating date and product_ids to reflect current values
                 order.date = currentDate;
                 order.product_ids = formValues;
                 console.log(order);
@@ -62,6 +66,7 @@ const OrderForm = () => {
         }));
     };
 
+    //record change in product_id input in formValues
     const handleChangeProductId = (i, e) => {
         const newFormValues = [...formValues];
         newFormValues[i] = e.target.value;
@@ -69,10 +74,12 @@ const OrderForm = () => {
         console.log(formValues);
       }
     
+    //add new product_id field
     const addFormFields = () => {
         setFormValues([...formValues, 0]);
     }
 
+    //remove product_id form field
     const removeFormFields = (i) => {
         const newFormValues = [...formValues];
         newFormValues.splice(i, 1);
